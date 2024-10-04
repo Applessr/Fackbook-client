@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: ["light"],
+    themes: [
+      {
+        mythems : {
+          "primary" : '#0866ff',
+          "secondary" : "#42b72a",
+          "accent" : "#37cdbe",
+          "neutral" : "#3d4451",
+          "base-100" : "#ffffff"
+        }
+      }
+    ],
   },
   plugins: [require("daisyui")],
 };
