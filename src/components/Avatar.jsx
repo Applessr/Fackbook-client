@@ -1,5 +1,6 @@
 import React from 'react'
 import defaultAvatar from '../assets/default-avatar.jpg'
+import { OnlineDot } from '../icons'
 
 const Avatar = (props) => {
     const { imgSrc, menu, ...restProps } = props

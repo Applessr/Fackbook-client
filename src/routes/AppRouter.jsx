@@ -4,6 +4,7 @@ import App from '../App'
 import SidebarMenu from "../components/SidebarMenu";
 import PostContainer from "../components/PostContainer";
 import SidebarContact from "../components/SidebarContact";
+import useUserStore from "../store/user-store";
 
 
 const guestRouter = createBrowserRouter([
@@ -32,7 +33,7 @@ const userRouter = createBrowserRouter([
 ])
 
 export default function AppRouter() {
-    const user = 'null'
+    const user = useUserStore((state)=> state.user)
     const finalRouter = user ? userRouter : guestRouter
     return (
         <RouterProvider router={finalRouter} />

@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { FacebookTitle } from '../icons'
 import axios from 'axios'
 import Register from './Register'
+import { toast } from 'react-toastify'
+import useUserStore from '../store/user-store'
 
 
 const Login = () => {
+    const login = useUserStore((state) => state.login)
     const [input, setInput] = useState({
         identity: '',
         password: ''
@@ -18,13 +21,15 @@ const Login = () => {
         try {
             //validate
             if (!(input.identity.trim() && input.password.trim())) {
-                return alert('Please fill all input')
+               toast.info('Please fill all input')
             }
-            const result = await axios.post('http://localhost:8888/auth/login', input)
-            console.log(result.data)
+            // const result = await axios.post('http://localhost:8888/auth/login', input)
+            let data = await login(input)
+            console.log(data.user)
         } catch (err) {
             const errMsg = err.response?.data?.error || err.message
             console.log(errMsg)
+            toast.error(errMsg)
         }
     }
 
